@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
-    const newSocket = io(import.meta.env.VITE_SOCKET_URL);
+    const newSocket = io(import.meta.env.VITE_SOCKET_URL, { transports: ['websocket'] });
     newSocket.on('connect_error', (err) => {
       console.error('Socket connection error:', err.message);
     });
